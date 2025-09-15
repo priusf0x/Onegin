@@ -114,7 +114,7 @@ char* strn_cat(char* destptr, const char* srcptr, size_t count)
 
     size_t counter = str_len(destptr);
 
-    strn_cpy(destptr + counter, srcptr, count - counter -1);
+    strn_cpy(destptr + counter, srcptr, count - counter - 1);
 
     return destptr;
 }
@@ -162,7 +162,7 @@ ssize_t get_line(char **lineptr, size_t *n, FILE *stream)
     {
         if (*n == 0)
         {
-            *lineptr = (char*) malloc(BUFFER_START_SIZE * sizeof(char));
+            *lineptr = (char*) calloc(BUFFER_START_SIZE, sizeof(char));
             *n = BUFFER_START_SIZE;
         }
         else

@@ -6,24 +6,6 @@
 
 #include "not_stdio.h"
 
-FILE * OpenSafely(const char * file_name, const char * access_level)
-{
-    static FILE * input_file = fopen(file_name, access_level);
-
-    return input_file;
-}
-
-int CloseSafely(FILE* file_pointer)
-{
-    if ((file_pointer == NULL) || (fclose(file_pointer) != 0))
-    {
-        perror("Failed to close the input file\n");
-        abort();
-    }
-
-    return 0;
-}
-
 size_t CountStrNumber(FILE * file_pointer)
 {
     assert(file_pointer != NULL);
@@ -105,4 +87,22 @@ void FreeData(char* array_of_pointers[], size_t str_count)
 //     max_size += 1; //for \0 symbol
 //
 //     return max_size;
+// }
+
+// FILE * OpenSafely(const char * file_name, const char * access_level)
+// {
+//     static FILE * input_file = fopen(file_name, access_level);
+//
+//     return input_file;
+// }
+//
+// int CloseSafely(FILE* file_pointer)
+// {
+//     if ((file_pointer == NULL) || (fclose(file_pointer) != 0))
+//     {
+//         perror("Failed to close the input file\n");
+//         abort();
+//     }
+//
+//     return 0;
 // }
