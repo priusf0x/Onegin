@@ -1,4 +1,4 @@
-SOURCES = string_functions/string_f.cpp main.cpp help.cpp sorting.cpp
+SOURCES = string_functions/string_f.cpp main.cpp help.cpp sorting.cpp compare_functions.cpp
 
 OBJ_ADD_DIR = string_functions
 OBJ_DIR = obj

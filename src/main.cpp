@@ -3,12 +3,14 @@
 #include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <assert.h>
 
 #include "help.h"
 #include "not_stdio.h"
 #include "sorting.h"
 #include "string_functions/not_stdio.h"
-#include <assert.h>
+#include "compare_functions.h"
+
 
 int main(void)
 {
@@ -22,7 +24,7 @@ int main(void)
     char** array_of_pointers =(char**) calloc(str_count, sizeof(char*));
 
     EnterData(array_of_pointers, str_count, file_input);
-    array_of_pointers = QSort(array_of_pointers, str_count, str_cmp);
+    array_of_pointers = QSort(array_of_pointers, str_count, str_cmp_reversed);
 
     for (size_t i = 0; i < str_count; i++)
     {

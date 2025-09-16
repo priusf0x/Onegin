@@ -1,5 +1,6 @@
 #include "help.h"
 
+#include <ctype.h>
 #include <stdio.h>
 #include <assert.h>
 #include <stdlib.h>
@@ -12,14 +13,23 @@ size_t CountStrNumber(FILE * file_pointer)
 
     size_t str_count = 0;
     int character = 0;
+    bool flag = false;
 
     do
     {
         character = (char) fgetc(file_pointer);
-        if ((character == '\n') || (character == EOF))
+
+        if (!isspace(character))
+        {
+            flag = true;
+        }
+
+        if (((character == '\n') || (character == EOF)) && flag)
         {
             str_count++;
+            flag = false;
         }
+        //printf("%d\n", str_count);
     } while (character != EOF);
 
     fseek(file_pointer, 0L, SEEK_SET);
@@ -30,9 +40,17 @@ size_t CountStrNumber(FILE * file_pointer)
 void EnterData(char* array_of_pointers[], size_t str_count, FILE * input_file)
 {
     size_t n = 0;
+    char character = 0;
     for (size_t index = 0; index < str_count; index++)
     {
         n = 0;
+
+        while (isspace(character = (char) fgetc(input_file)))
+        {
+            continue;
+        }
+        ungetc(character, input_file);
+
         get_line(&(array_of_pointers[index]), &n, input_file);
     }
 
@@ -48,7 +66,6 @@ void FreeData(char* array_of_pointers[], size_t str_count)
 
     free(array_of_pointers);
 }
-
 
 // void ChangeLinesCharByChar(size_t)
 // {
