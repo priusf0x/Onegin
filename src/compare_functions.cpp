@@ -28,7 +28,7 @@ int str_cmp_reversed(const char *s1, const char *s2)
         return 1;
     }
 
-    char character1 = s1[count_1 - 1], character2 = s2[count_2 - 1];
+    char character1 = s1[count_1], character2 = s2[count_2];
 
     while (count_1 > 0 && count_2 > 0)
     {
