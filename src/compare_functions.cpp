@@ -3,7 +3,7 @@
 #include <assert.h>
 #include <stdlib.h>
 
-size_t str_len_mod(const char* string)
+size_t CountStringLength(const char* string)
 {
     size_t symbol_counter = 0;
 
@@ -16,12 +16,12 @@ size_t str_len_mod(const char* string)
     return symbol_counter;
 }
 
-int str_cmp_reversed(const char *s1, const char *s2)
+int CompareStringReversed(const char *s1, const char *s2)
 {
     assert(s1 != NULL);
     assert(s2 != NULL);
 
-    int count_1 = (int) (str_len_mod(s1)), count_2 = (int) (str_len_mod(s2));
+    int count_1 = (int) (CountStringLength(s1)), count_2 = (int) (CountStringLength(s2));
 
     count_1--;
     count_2--;
@@ -62,7 +62,7 @@ int str_cmp_reversed(const char *s1, const char *s2)
     return 0;
 }
 
-int str_cmp_mod(const char *s1, const char *s2)
+int CompareStringModified(const char *s1, const char *s2)
 {
     size_t index = 0;
 

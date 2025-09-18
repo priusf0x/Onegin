@@ -9,7 +9,7 @@
 #include "sorting.h"
 #include "compare_functions.h"
 
-const char * INPUT_NAME = "input.txt";
+const char * INPUT_NAME = "input1.txt";
 const char * OUTPUT_NAME = "output.txt";
 
 int main(void)
@@ -28,7 +28,7 @@ int main(void)
 
     EnterData(array_of_pointers, &str_count, input_buffer);
 
-    QSort(array_of_pointers, str_count, str_cmp_reversed);
+    QSort(array_of_pointers, str_count, CompareStringModified);
 
     for (size_t i = 0; i < str_count; i++)
     {
