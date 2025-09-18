@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <assert.h>
 
-#include "help.h"
+#include "tools.h"
 
 int QSort(char** pointers_array, size_t array_size, int (*compare_criteria) (const char*, const char*))
 {

@@ -1,15 +1,27 @@
 #include "compare_functions.h"
 
 #include <assert.h>
+#include <stdlib.h>
 
-#include "string_functions/not_stdio.h"
+size_t str_len_mod(const char* string)
+{
+    size_t symbol_counter = 0;
+
+    while (* string != '\n')
+    {
+        symbol_counter++;
+        string++;
+    }
+
+    return symbol_counter;
+}
 
 int str_cmp_reversed(const char *s1, const char *s2)
 {
     assert(s1 != NULL);
     assert(s2 != NULL);
 
-    int count_1 = (int) (str_len(s1)), count_2 = (int) (str_len(s2));
+    int count_1 = (int) (str_len_mod(s1)), count_2 = (int) (str_len_mod(s2));
 
     count_1--;
     count_2--;
@@ -49,3 +61,37 @@ int str_cmp_reversed(const char *s1, const char *s2)
     }
     return 0;
 }
+
+int str_cmp_mod(const char *s1, const char *s2)
+{
+    size_t index = 0;
+
+    assert(s1 != NULL);
+    assert (s2 != NULL);
+
+    char character1 = s1[index];
+    char character2 = s2[index];
+
+    while (true)
+    {
+        if ((character1 == '\n') && (character2 == '\n'))
+        {
+            return 0;
+        }
+        else if ((character1 == '\n') || character1 < character2)
+        {
+            return -1;
+        }
+        else if ((character2 == '\n') || character2 < character1)
+        {
+            return 1;
+        }
+        else
+        {
+            index++;
+            character1 = s1[index];
+            character2 = s2[index];
+        }
+    }
+}
+
