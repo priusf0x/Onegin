@@ -30,25 +30,16 @@ size_t CountCharInStr(char character, const char* str)
     const char* pointer_to_char = str;
     size_t count = 0;
 
-    while (*pointer_to_char != EOF && *pointer_to_char != '\0')
+    while (*pointer_to_char != '\0')
     {
         pointer_to_char = strchr(pointer_to_char, character);
         if (pointer_to_char == NULL)
         {
             break;
         }
-        count++;
+        count++;  // calloc buffer
         pointer_to_char++;
     }
 
     return count;
 }
-
-char* MakeBuffer(size_t char_number, FILE* file_input)
-{
-    char* input_buffer = (char*) calloc(char_number, sizeof(char));
-    size_t read_count = fread((void*) input_buffer, sizeof(char), char_number, file_input);
-    input_buffer[read_count] = '\0';
-    return input_buffer;
-}
-
