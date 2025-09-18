@@ -10,5 +10,4 @@ size_t FindMaxStrSize(FILE * file_pointer);
 void EnterData(char** array_of_pointers, size_t str_count, FILE * input_file);
 void FreeData(char* array_of_pointers[], size_t str_count);
 
-
 #endif

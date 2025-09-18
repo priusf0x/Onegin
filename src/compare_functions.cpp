@@ -7,13 +7,12 @@
 int str_cmp_reversed(const char *s1, const char *s2)
 {
     assert(s1 != NULL);
-    assert (s2 != NULL);
+    assert(s2 != NULL);
 
     int count_1 = (int) (str_len(s1)), count_2 = (int) (str_len(s2));
 
     count_1--;
     count_2--;
-
 
     if ((count_1 == 0) && (count_2 == 0))
     {
