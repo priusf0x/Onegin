@@ -28,3 +28,23 @@ int ReadFile(char** input_buffer, char*** array_of_pointers, size_t* str_count, 
 
     return 0;
 }
+
+int WriteInFile(char** array_of_pointers, size_t str_count, const char* output_name)
+{
+    FILE* file_output = fopen(output_name, "w");
+
+    for (size_t i = 0; i < str_count; i++)
+    {
+        char* pointer = array_of_pointers[i];
+        while (*pointer != '\n')
+        {
+            fputc(*pointer, file_output); // optimize
+            pointer++;
+        }
+        fputc(*pointer, file_output);
+    }
+
+    fclose(file_output);
+
+    return 0;
+}

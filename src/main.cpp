@@ -22,20 +22,7 @@ int main(void)
 
     QSort(array_of_pointers, str_count, CompareStringModified);
 
-    FILE* file_output = fopen(OUTPUT_NAME, "w");
-
-    for (size_t i = 0; i < str_count; i++)
-    {
-        char* pointer = array_of_pointers[i];
-        while (*pointer != '\n')
-        {
-            fputc(*pointer, file_output); // optimize
-            pointer++;
-        }
-        fputc(*pointer, file_output);
-    }
-
-    fclose(file_output);
+    WriteInFile(array_of_pointers, str_count, OUTPUT_NAME);
 
     free(array_of_pointers);
     free(input_buffer);
