@@ -1,7 +1,6 @@
 #include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <assert.h>
 #include <time.h>
 
 #include "tools.h"
@@ -9,6 +8,7 @@
 #include "compare_functions.h"
 #include "read_print_file.h"
 #include "simple_parser.h"
+#include "assert.h"
 
 int main(int argc, char **argv)
 {
@@ -18,9 +18,19 @@ int main(int argc, char **argv)
     char** array_of_pointers = NULL;
     size_t str_count = 0;
 
-    ReadFlags(argc, argv, &input_name, &output_name);
+    PrintLogo();
 
-    ReadFile(&input_buffer, &array_of_pointers, &str_count, input_name);
+    if (ReadFlags(argc, argv, &input_name, &output_name))
+    {
+        printf("Incorrect unput.\n");
+        exit(EXIT_FAILURE);
+    }
+
+    if (ReadFile(&input_buffer, &array_of_pointers, &str_count, input_name))
+    {
+        printf("Failed to open the file.");
+        exit(EXIT_FAILURE);
+    }
 
     QSort(array_of_pointers, str_count, CompareStringReversed);
 

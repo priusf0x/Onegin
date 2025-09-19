@@ -14,6 +14,16 @@ int ReadFile(char** input_buffer, char*** array_of_pointers, size_t* str_count, 
     struct stat file_stat = {0};
     FILE* file_input = fopen(input_name, "r");
 
+    ASSERT(input_buffer != NULL);
+    ASSERT(array_of_pointers != NULL);
+    ASSERT(str_count != NULL);
+    ASSERT(input_name != NULL);
+
+    if (file_input == NULL)
+    {
+        return 1;
+    }
+
     stat(input_name, &file_stat);
     size_t char_number = (size_t) (file_stat.st_size + 1);
 
@@ -27,22 +37,37 @@ int ReadFile(char** input_buffer, char*** array_of_pointers, size_t* str_count, 
 
     EnterData(*array_of_pointers, str_count, *input_buffer);
 
-    fclose(file_input);
+    if (fclose(file_input) != 0)
+    {
+        return 1;
+    }
 
     return 0;
 }
 
 int WriteInFile(char** array_of_pointers, size_t str_count, const char* output_name)
 {
-        FILE* file_output = fopen(output_name, "w");
-        for (size_t i = 0; i < str_count; i++)
-        {
-            const char* pointer = array_of_pointers[i];
-            fwrite(pointer, CountStringLength(pointer), sizeof(char), file_output);
-            fputc('\n',file_output);
-        }
+    ASSERT(array_of_pointers != NULL);
+    ASSERT(output_name != NULL);
 
-        fclose(file_output);
+    FILE* file_output = fopen(output_name, "w");
+
+    if (file_output == NULL)
+    {
+        return 1;
+    }
+
+    for (size_t i = 0; i < str_count; i++)
+    {
+        const char* pointer = array_of_pointers[i];
+        fwrite(pointer, CountStringLength(pointer), sizeof(char), file_output);
+        fputc('\n',file_output);
+    }
+
+    if (fclose(file_output) != 0)
+    {
+        return 1;
+    }
 
     return 0;
 }

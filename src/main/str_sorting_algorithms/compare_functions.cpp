@@ -1,11 +1,14 @@
 #include "compare_functions.h"
 
-#include <assert.h>
 #include <ctype.h>
 #include <stdlib.h>
 
+#include "assert.h"
+
 size_t CountStringLength(const char* string)
 {
+    ASSERT(string != NULL);
+
     size_t symbol_counter = 0;
 
     while ((*string) != '\n')
@@ -19,8 +22,8 @@ size_t CountStringLength(const char* string)
 
 int CompareStringReversed(const char *s1, const char *s2)
 {
-    assert(s1 != NULL);
-    assert(s2 != NULL);
+    ASSERT(s1 != NULL);
+    ASSERT(s2 != NULL);
 
     int count_1 = (int) (CountStringLength(s1)), count_2 = (int) (CountStringLength(s2));
 
@@ -67,11 +70,11 @@ int CompareStringReversed(const char *s1, const char *s2)
 
 int CompareStringModified(const char *s1, const char *s2)
 {
+    ASSERT(s1 != NULL);
+    ASSERT(s2 != NULL);
+
     size_t index1 = 0;
     size_t index2 = 0;
-
-    assert(s1 != NULL);
-    assert (s2 != NULL);
 
     char character1 = s1[index1];
     char character2 = s2[index2];

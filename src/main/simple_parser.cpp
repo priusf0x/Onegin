@@ -2,8 +2,12 @@
 
 #include <stdlib.h>
 
+#include "assert.h"
+
 int ReadFlags(int argc, char **argv, char** input_name, char** output_name)
 {
+    ASSERT(argv != NULL);
+
     if (argc < 3)
     {
         return 1;

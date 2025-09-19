@@ -1,13 +1,14 @@
 #include "sorting.h"
 
 #include <stdlib.h>
-#include <assert.h>
 
 #include "tools.h"
+#include "assert.h"
 
 int QSort(char** pointers_array, size_t array_size, int (*compare_criteria) (const char*, const char*))
 {
-    assert(pointers_array != NULL);
+    ASSERT(pointers_array != NULL);
+    ASSERT(compare_criteria != NULL);
 
     size_t bigger_index = array_size - 1;
     size_t current_index = 0;
