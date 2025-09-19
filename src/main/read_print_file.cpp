@@ -10,7 +10,7 @@
 #include "compare_functions.h"
 #include "error.h"
 
-int ReadFile(char** input_buffer, char*** array_of_pointers, size_t* str_count, const char* input_name)
+enum ErrorTypes ReadFile(char** input_buffer, char*** array_of_pointers, size_t* str_count, const char* input_name)
 {
     ASSERT(input_buffer != NULL);
     ASSERT(array_of_pointers != NULL);
@@ -18,6 +18,14 @@ int ReadFile(char** input_buffer, char*** array_of_pointers, size_t* str_count, 
     ASSERT(input_name != NULL);
 
     struct stat file_stat = {};
+
+    if (stat(input_name, &file_stat) != 0)
+    {
+        return SYSTEM_ERROR;
+    }
+
+    size_t char_number = (size_t) (file_stat.st_size);
+
     FILE* file_input = fopen(input_name, "r");
 
     if (file_input == NULL)
@@ -25,30 +33,42 @@ int ReadFile(char** input_buffer, char*** array_of_pointers, size_t* str_count, 
         return READ_ERROR;
     }
 
-    stat(input_name, &file_stat); //ПОПКА-БУДЕТ-КРАСНАЯ - ретарн
-    size_t char_number = (size_t) (file_stat.st_size + 1);
+    *input_buffer = (char*) calloc(char_number + 2, sizeof(char));//1 для \0 другой для если надо будет \n
 
-    *input_buffer = (char*) calloc(char_number, sizeof(char));
+    if (*input_buffer == NULL)
+    {
+        return MEMORY_ERROR;
+    }
+
     size_t read_count = fread(*input_buffer, sizeof(char), char_number, file_input);
-
-//     if (*input_buffer == NULL)
-//     {
-//
-//     }
-
     if (fclose(file_input) != 0)
     {
         return READ_ERROR;
     }
+    memset(input_buffer + read_count + 1, 0, char_number - read_count);
+    if (read_count > 0)
+    {
+        if ((*input_buffer)[read_count - 1] != '\n')
+        {
+            (*input_buffer)[read_count] = '\n';
+        }
+    }
+    else
+    {
+        return EMPTY_FILE_ERROR;
+    }
 
-    memset(input_buffer + read_count, 0, char_number - read_count - 1);
+    *str_count = CountCharInStr('\n', *input_buffer);
+    *array_of_pointers = (char**) calloc(*str_count, sizeof(char*));
 
-    *str_count = CountCharInStr('\n', *input_buffer); //УМОМ -  - добавить \n
-    *array_of_pointers = (char**) calloc(*str_count, sizeof(char*)); //ПОПКА-БУДЕТ-КРАСНАЯ - calloc pr
+    if (*input_buffer == NULL)
+    {
+        return MEMORY_ERROR;
+    }
 
     EnterData(*array_of_pointers, *str_count, *input_buffer);
 
-    return 0;
+    return SUCCES;
 }
 
 int WriteInFile(char** array_of_pointers, size_t str_count, const char* output_name)
@@ -66,8 +86,7 @@ int WriteInFile(char** array_of_pointers, size_t str_count, const char* output_n
     for (size_t i = 0; i < str_count; i++)
     {
         const char* pointer = array_of_pointers[i];
-        fwrite(pointer, CountStringLength(pointer), sizeof(char), file_output); //УМОМ +1
-        fputc('\n',file_output);
+        fwrite(pointer, CountStringLength(pointer) + 1, sizeof(char), file_output);
     }
 
     if (fclose(file_output) != 0)
@@ -75,5 +94,5 @@ int WriteInFile(char** array_of_pointers, size_t str_count, const char* output_n
         return READ_ERROR;
     }
 
-    return 0;
+    return SUCCES;
 }

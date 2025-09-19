@@ -10,29 +10,22 @@
 #include "read_print_file.h"
 #include "sorting.h"
 #include "simple_parser.h"
+#include "error.h"
 
 int main(int argc, char** argv)
 {
     char* input_name = NULL;
     char* output_name = NULL;
-    char* input_buffer = NULL;//ХУЙНЯ-ПЕРЕДЕЛЫВАЙ struct
+    char* input_buffer = NULL; //REVIEW - можно сделать стракт в будущем
     char** array_of_pointers = NULL;
     size_t str_count = 0;
 
    // LogShit(DETALIZATION_LEVEL_ERROR, "Meow");
     PrintLogo();
 
-    if (ReadFlags(argc, argv, &input_name, &output_name))
-    {
-        printf("Incorrect input.\n");
-        exit(EXIT_FAILURE);
-    }
+    CheckError(ReadFlags(argc, argv, &input_name, &output_name));
 
-    if (ReadFile(&input_buffer, &array_of_pointers, &str_count, input_name))
-    {
-        printf("Failed to open the file.\n");
-        exit(EXIT_FAILURE);
-    }
+    CheckError(ReadFile(&input_buffer, &array_of_pointers, &str_count, input_name));
 
     QSort(array_of_pointers, str_count, CompareStringReversed);
 
@@ -42,11 +35,6 @@ int main(int argc, char** argv)
     free(input_buffer);
     return 0;
 }
-
-//TODO - increase sort count
-
-//TODO - add parser logger
-
 
     // struct timespec start, end;
     // clock_gettime(CLOCK_MONOTONIC_RAW, &start);

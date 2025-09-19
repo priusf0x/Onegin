@@ -15,7 +15,8 @@
         "unordered_map": "cpp",
         "unordered_set": "cpp",
         "vector": "cpp",
-        "iterator": "cpp"
+        "iterator": "cpp",
+        "cstdlib": "cpp"
     },
     "cSpell.words": [
         "DETALIZATION"
