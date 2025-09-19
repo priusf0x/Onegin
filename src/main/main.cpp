@@ -3,32 +3,34 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include "tools.h"
-#include "sorting.h"
-#include "compare_functions.h"
-#include "read_print_file.h"
-#include "simple_parser.h"
 #include "assert.h"
+#include "compare_functions.h"
+#include "tools.h"
+#include "logger.h"
+#include "read_print_file.h"
+#include "sorting.h"
+#include "simple_parser.h"
 
-int main(int argc, char **argv)
+int main(int argc, char** argv)
 {
-    char * input_name = NULL;
-    char * output_name = NULL;
-    char* input_buffer = NULL;
+    char* input_name = NULL;
+    char* output_name = NULL;
+    char* input_buffer = NULL;//ХУЙНЯ-ПЕРЕДЕЛЫВАЙ struct
     char** array_of_pointers = NULL;
     size_t str_count = 0;
 
+   // LogShit(DETALIZATION_LEVEL_ERROR, "Meow");
     PrintLogo();
 
     if (ReadFlags(argc, argv, &input_name, &output_name))
     {
-        printf("Incorrect unput.\n");
+        printf("Incorrect input.\n");
         exit(EXIT_FAILURE);
     }
 
     if (ReadFile(&input_buffer, &array_of_pointers, &str_count, input_name))
     {
-        printf("Failed to open the file.");
+        printf("Failed to open the file.\n");
         exit(EXIT_FAILURE);
     }
 

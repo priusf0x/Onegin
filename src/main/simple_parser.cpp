@@ -3,6 +3,7 @@
 #include <stdlib.h>
 
 #include "assert.h"
+#include "error.h"
 
 int ReadFlags(int argc, char **argv, char** input_name, char** output_name)
 {
@@ -10,7 +11,7 @@ int ReadFlags(int argc, char **argv, char** input_name, char** output_name)
 
     if (argc < 3)
     {
-        return 1;
+        return INPUT_ERROR;
     }
 
     (*input_name) = argv[1];

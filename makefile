@@ -1,4 +1,4 @@
-SOURCES =  main/main.cpp main/tools.cpp main/str_sorting_algorithms/sorting.cpp main/str_sorting_algorithms/compare_functions.cpp main/read_print_file.cpp main/simple_parser.cpp
+SOURCES =  main/main.cpp main/tools.cpp main/str_sorting_algorithms/sorting.cpp main/str_sorting_algorithms/compare_functions.cpp main/read_print_file.cpp main/simple_parser.cpp common/logger.cpp
 
 OBJ_ADD_DIR = string_functions
 OBJ_DIR = obj

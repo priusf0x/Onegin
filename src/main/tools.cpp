@@ -6,25 +6,22 @@
 #include <stdlib.h>
 #include <string.h>
 
-int EnterData(char** array_of_pointers, size_t* str_count, char* input_buffer)
+int EnterData(char** array_of_pointers, size_t str_count, char* input_buffer)
 {
     ASSERT(array_of_pointers != NULL);
-    ASSERT(str_count != NULL);
-    ASSERT(str_count != NULL);
+    ASSERT(input_buffer != NULL);
 
     char* current_pointer = input_buffer;
     size_t counter = 0;
 
     array_of_pointers[0] = input_buffer;
 
-    while ((counter < *str_count) && (*current_pointer != '\0'))
+    while ((counter < str_count) && (*current_pointer != '\0'))
     {
         array_of_pointers[counter] = current_pointer;
         counter++;
         current_pointer = strchr(current_pointer, '\n') + 1;
     }
-
-    *str_count = counter;
 
     return 0;
 }

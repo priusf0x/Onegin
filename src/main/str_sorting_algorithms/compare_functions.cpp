@@ -25,7 +25,7 @@ int CompareStringReversed(const char *s1, const char *s2)
     ASSERT(s1 != NULL);
     ASSERT(s2 != NULL);
 
-    int count_1 = (int) (CountStringLength(s1)), count_2 = (int) (CountStringLength(s2));
+    int count_1 = (int) (CountStringLength(s1)), count_2 = (int) (CountStringLength(s2)); // TODO size_t
 
     do
     {
@@ -37,7 +37,7 @@ int CompareStringReversed(const char *s1, const char *s2)
             continue;
         }
 
-        while((--count_2 > 0) && !isalnum(character2 = s2[count_2]))
+        while((--count_2 >= 0) && !isalnum(character2 = s2[count_2]))
         {
             continue;
         }
@@ -55,7 +55,7 @@ int CompareStringReversed(const char *s1, const char *s2)
             return 1;
         }
 
-        if (tolower(character1) < tolower(character2))
+        if (tolower(character1) < tolower(character2))//TODO - сохранить чар
         {
             return -1;
         }
