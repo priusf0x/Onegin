@@ -1,13 +1,14 @@
 #include "compare_functions.h"
 
 #include <assert.h>
+#include <ctype.h>
 #include <stdlib.h>
 
 size_t CountStringLength(const char* string)
 {
     size_t symbol_counter = 0;
 
-    while (* string != '\n')
+    while ((*string) != '\n')
     {
         symbol_counter++;
         string++;
@@ -23,74 +24,90 @@ int CompareStringReversed(const char *s1, const char *s2)
 
     int count_1 = (int) (CountStringLength(s1)), count_2 = (int) (CountStringLength(s2));
 
-    count_1--;
-    count_2--;
+    do
+    {
+        char character1 = 0;
+        char character2 = 0;
 
-    if ((count_1 == 0) && (count_2 == 0))
-    {
-        return 0;
-    }
-    else if (count_1 <= 0)
-    {
-        return -1;
-    }
-    else if (count_2 <= 0)
-    {
-        return 1;
-    }
+        while((--count_1 >= 0) && !isalnum(character1 = s1[count_1]))
+        {
+            continue;
+        }
 
-    char character1 = s1[count_1], character2 = s2[count_2];
+        while((--count_2 > 0) && !isalnum(character2 = s2[count_2]))
+        {
+            continue;
+        }
 
-    while (count_1 > 0 && count_2 > 0)
-    {
-        if (character1 < character2)
+        if (!isalnum(character1) && !isalnum(character2))
+        {
+            return 0;
+        }
+        else if (!isalnum(character1))
         {
             return -1;
         }
-        else if (character2 < character1)
+        else if (!isalnum(character2))
         {
             return 1;
         }
-        else
+
+        if (tolower(character1) < tolower(character2))
         {
-            count_1--;
-            count_2--;
-            character1 = s1[count_1];
-            character2 = s2[count_2];
+            return -1;
         }
-    }
+        else if (tolower(character2) < tolower(character1))
+        {
+            return 1;
+        }
+    } while (count_1 >= 0 && count_2 >= 0);
+
     return 0;
 }
 
 int CompareStringModified(const char *s1, const char *s2)
 {
-    size_t index = 0;
+    size_t index1 = 0;
+    size_t index2 = 0;
 
     assert(s1 != NULL);
     assert (s2 != NULL);
 
-    char character1 = s1[index];
-    char character2 = s2[index];
+    char character1 = s1[index1];
+    char character2 = s2[index2];
 
     while (true)
     {
+        while(!isalnum(character1) && (character1 !='\n'))
+        {
+            index1++;
+            character1 = s1[index1];
+        }
+
+        while(!isalnum(character2) && (character2 !='\n'))
+        {
+            index2++;
+            character2 = s2[index2];
+        }
+
         if ((character1 == '\n') && (character2 == '\n'))
         {
             return 0;
         }
-        else if ((character1 == '\n') || character1 < character2)
+        else if ((character1 == '\n') || tolower(character1) < tolower(character2))
         {
             return -1;
         }
-        else if ((character2 == '\n') || character2 < character1)
+        else if ((character2 == '\n') || tolower(character2) < tolower(character1))
         {
             return 1;
         }
         else
         {
-            index++;
-            character1 = s1[index];
-            character2 = s2[index];
+            index1++;
+            index2++;
+            character1 = s1[index1];
+            character2 = s2[index2];
         }
     }
 }

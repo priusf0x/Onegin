@@ -37,7 +37,7 @@ size_t CountCharInStr(char character, const char* str)
         {
             break;
         }
-        count++;  // calloc buffer
+        count++;
         pointer_to_char++;
     }
 

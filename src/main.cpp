@@ -20,7 +20,7 @@ int main(void)
 
     ReadFile(&input_buffer, &array_of_pointers, &str_count, INPUT_NAME);
 
-    QSort(array_of_pointers, str_count, CompareStringModified);
+    QSort(array_of_pointers, str_count, CompareStringReversed);
 
     WriteInFile(array_of_pointers, str_count, OUTPUT_NAME);
 
@@ -33,10 +33,9 @@ int main(void)
 
 //TODO - add parser logger
 
+
     // struct timespec start, end;
     // clock_gettime(CLOCK_MONOTONIC_RAW, &start);
-    // clock_gettime(CLOCK_MONOTONIC_RAW, &end);
-
     // long delta_us = (end.tv_sec - start.tv_sec) * 1000 + (end.tv_nsec - start.tv_nsec)/1000000;
     // printf("Sorting time = %ld ms\n", delta_us);
 
