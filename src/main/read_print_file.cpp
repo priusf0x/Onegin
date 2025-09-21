@@ -10,7 +10,11 @@
 #include "compare_functions.h"
 #include "error.h"
 
-enum ErrorTypes ReadFile(char** input_buffer, char*** array_of_pointers, size_t* str_count, const char* input_name)
+enum ErrorTypes
+ReadFile(char**      input_buffer,
+         char***     array_of_pointers,
+         size_t*     str_count,
+         const char* input_name)
 {
     ASSERT(input_buffer != NULL);
     ASSERT(array_of_pointers != NULL);
@@ -71,7 +75,10 @@ enum ErrorTypes ReadFile(char** input_buffer, char*** array_of_pointers, size_t*
     return SUCCES;
 }
 
-int WriteInFile(char** array_of_pointers, size_t str_count, const char* output_name)
+int
+WriteInFile(char**      array_of_pointers,
+            size_t      str_count,
+            const char* output_name)
 {
     ASSERT(array_of_pointers != NULL);
     ASSERT(output_name != NULL);

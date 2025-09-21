@@ -5,7 +5,8 @@
 
 #include "assert.h"
 
-size_t CountStringLength(const char* string)
+size_t
+CountStringLength(const char* string)
 {
     ASSERT(string != NULL);
 
@@ -20,7 +21,9 @@ size_t CountStringLength(const char* string)
     return symbol_counter;
 }
 
-int CompareStringReversed(const char *s1, const char *s2)
+int
+CompareStringReversed(const char *s1,
+                      const char *s2)
 {
     ASSERT(s1 != NULL);
     ASSERT(s2 != NULL);
@@ -68,7 +71,9 @@ int CompareStringReversed(const char *s1, const char *s2)
     return 0;
 }
 
-int CompareStringModified(const char *s1, const char *s2)
+int
+CompareStringModified(const char *s1,
+                      const char *s2)
 {
     ASSERT(s1 != NULL);
     ASSERT(s2 != NULL);

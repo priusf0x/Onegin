@@ -3,7 +3,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int CheckError(enum ErrorTypes return_value)
+int
+CheckError(enum ErrorTypes return_value)
 {
     switch(return_value)
     {

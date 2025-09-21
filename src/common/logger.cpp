@@ -6,18 +6,20 @@
 #include "assert.h"
 
 const size_t LOG_BUFFER_SIZE = 100;
-static enum DetalizationLevels DETALIZATION_LEVEL = DETALIZATION_LEVEL_DEBUG;
-char LOG_BUFFER[LOG_BUFFER_SIZE] = {0};
+static enum  DetalizationLevels DETALIZATION_LEVEL = DETALIZATION_LEVEL_DEBUG;
+char         LOG_BUFFER[LOG_BUFFER_SIZE] = {0};
 
-FILE * GetLogFile()
+FILE*
+GetLogFile()
 {
-    static FILE * log_file = OpenLogFile();
+    static FILE* log_file = OpenLogFile();
     return log_file;
 }
 
-FILE * OpenLogFile()
+FILE*
+OpenLogFile()
 {
-    FILE * log_file = fopen(LOG_FILE, "a+");
+    FILE* log_file = fopen(LOG_FILE, "a+");
     if (log_file == NULL)
     {
         fprintf(stderr, "FAILED TO READ LOG FILE\n");
@@ -28,7 +30,9 @@ FILE * OpenLogFile()
     return log_file;
 }
 
-void LogMessage(const char* log_message, enum DetalizationLevels detalization_level)
+void
+LogMessage(const char*             log_message,
+           enum DetalizationLevels detalization_level)
 {
     ASSERT(log_message != NULL);
 

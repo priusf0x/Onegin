@@ -6,7 +6,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-int EnterData(char** array_of_pointers, size_t str_count, char* input_buffer)
+int
+EnterData(char** array_of_pointers,
+          size_t str_count,
+          char*  input_buffer)
 {
     ASSERT(array_of_pointers != NULL);
     ASSERT(input_buffer != NULL);
@@ -26,7 +29,9 @@ int EnterData(char** array_of_pointers, size_t str_count, char* input_buffer)
     return 0;
 }
 
-size_t CountCharInStr(char character, const char* str)
+size_t
+CountCharInStr(char        character,
+               const char* str)
 {
     ASSERT(str != NULL);
 
@@ -47,7 +52,8 @@ size_t CountCharInStr(char character, const char* str)
     return count;
 }
 
-int PrintLogo(void)
+int
+PrintLogo(void)
 {
     printf(
     "▒█████   ███▄    █ ▓█████   ▄████  ██▓ ███▄    █ \n"

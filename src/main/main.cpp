@@ -12,15 +12,18 @@
 #include "simple_parser.h"
 #include "error.h"
 
-int main(int argc, char** argv)
+int
+main(int    argc,
+     char** argv)
 {
+    LogShit(DETALIZATION_LEVEL_DEBUG, "Program started");
+
     char* input_name = NULL;
     char* output_name = NULL;
     char* input_buffer = NULL; //REVIEW - можно сделать стракт в будущем
     char** array_of_pointers = NULL;
     size_t str_count = 0;
 
-   // LogShit(DETALIZATION_LEVEL_ERROR, "Meow");
     PrintLogo();
 
     CheckError(ReadFlags(argc, argv, &input_name, &output_name));
@@ -33,6 +36,8 @@ int main(int argc, char** argv)
 
     free(array_of_pointers);
     free(input_buffer);
+
+    LogShit(DETALIZATION_LEVEL_DEBUG, "Program ended succ");
     return 0;
 }
 

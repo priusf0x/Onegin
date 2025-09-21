@@ -5,7 +5,11 @@
 #include "assert.h"
 #include "error.h"
 
-enum ErrorTypes ReadFlags(int argc, char **argv, char** input_name, char** output_name)
+enum ErrorTypes
+ReadFlags(int    argc,
+          char** argv,
+          char** input_name,
+          char** output_name)
 {
     ASSERT(argv != NULL);
 
