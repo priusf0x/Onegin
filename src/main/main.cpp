@@ -18,9 +18,9 @@ main(int    argc,
 {
     LogShit(DETALIZATION_LEVEL_DEBUG, "Program started");
 
-    char* input_name = NULL;
-    char* output_name = NULL;
-    char* input_buffer = NULL; //REVIEW - можно сделать стракт в будущем
+    char*  input_name = NULL;
+    char*  output_name = NULL;
+    char*  input_buffer = NULL; //REVIEW - можно сделать стракт в будущем
     char** array_of_pointers = NULL;
     size_t str_count = 0;
 

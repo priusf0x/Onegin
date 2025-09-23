@@ -58,14 +58,8 @@ CompareStringReversed(const char *s1,
             return 1;
         }
 
-        if (tolower(character1) < tolower(character2))//TODO - сохранить чар
-        {
-            return -1;
-        }
-        else if (tolower(character2) < tolower(character1))
-        {
-            return 1;
-        }
+        return tolower(character1) - tolower(character2);
+
     } while (count_1 >= 0 && count_2 >= 0);
 
     return 0;

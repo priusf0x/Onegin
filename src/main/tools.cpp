@@ -17,8 +17,6 @@ EnterData(char** array_of_pointers,
     char* current_pointer = input_buffer;
     size_t counter = 0;
 
-    array_of_pointers[0] = input_buffer;
-
     while ((counter < str_count) && (*current_pointer != '\0'))
     {
         array_of_pointers[counter] = current_pointer;

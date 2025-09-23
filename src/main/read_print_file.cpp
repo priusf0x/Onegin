@@ -65,17 +65,17 @@ ReadFile(char**      input_buffer,
     *str_count = CountCharInStr('\n', *input_buffer);
     *array_of_pointers = (char**) calloc(*str_count, sizeof(char*));
 
-    if (*input_buffer == NULL)
+    if (*array_of_pointers == NULL)
     {
         return MEMORY_ERROR;
     }
 
     EnterData(*array_of_pointers, *str_count, *input_buffer);
 
-    return SUCCES;
+    return SUCCESS;
 }
 
-int
+enum ErrorTypes
 WriteInFile(char**      array_of_pointers,
             size_t      str_count,
             const char* output_name)
@@ -101,5 +101,5 @@ WriteInFile(char**      array_of_pointers,
         return READ_ERROR;
     }
 
-    return SUCCES;
+    return SUCCESS;
 }

@@ -3,7 +3,7 @@
 
 enum ErrorTypes
 {
-    SUCCES = 0,
+    SUCCESS = 0,
     MEMORY_ERROR =1,
     INPUT_ERROR = 2,
     READ_ERROR = 3,

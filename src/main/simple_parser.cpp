@@ -12,6 +12,8 @@ ReadFlags(int    argc,
           char** output_name)
 {
     ASSERT(argv != NULL);
+    ASSERT(input_name != NULL);
+    ASSERT(output_name != NULL);
 
     if (argc < 3)
     {
@@ -21,5 +23,5 @@ ReadFlags(int    argc,
     (*input_name) = argv[1];
     (*output_name) = argv[2];
 
-    return SUCCES;
+    return SUCCESS;
 }

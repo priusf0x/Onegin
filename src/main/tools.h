@@ -1,5 +1,5 @@
-#ifndef HELP_H
-#define HELP_H
+#ifndef TOOLS_H
+#define TOOLS_H
 
 #include <stdio.h>
 

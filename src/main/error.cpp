@@ -8,7 +8,7 @@ CheckError(enum ErrorTypes return_value)
 {
     switch(return_value)
     {
-    case SUCCES:
+    case SUCCESS:
         break;
     case MEMORY_ERROR:
         printf("Error memory was occupied.\n");
