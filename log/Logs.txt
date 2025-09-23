@@ -40,3 +40,59 @@
 
  <22:50:50> Program started
  <22:50:50> Program ended succ
+-------------------------------------
+
+ <01:41:05> Program started
+ <01:41:05> Program printed Onegin-logo
+ <01:41:06> Program ended successful
+-------------------------------------
+
+ <01:43:48> Program started
+ <01:43:48> Program printed Onegin-logo
+ <01:43:49> Program ended successful
+-------------------------------------
+
+ <01:43:52> Program started
+ <01:43:52> Program printed Onegin-logo
+ <01:43:53> Program ended successful
+-------------------------------------
+
+ <01:43:57> Program started
+ <01:43:57> Program printed Onegin-logo
+ <01:43:57> System error was occupied in 36.
+-------------------------------------
+
+ <01:45:15> Program started
+ <01:45:15> Program printed Onegin-logo
+ <01:45:15> System error was occupied in 36 in src/main/error.cpp.
+-------------------------------------
+
+ <01:45:21> Program started
+ <01:45:21> Program printed Onegin-logo
+ <01:45:21> System error was occupied in 36 in src/main/error.cpp.
+-------------------------------------
+
+ <01:45:22> Program started
+ <01:45:22> Program printed Onegin-logo
+ <01:45:22> System error was occupied in 36 in src/main/error.cpp.
+-------------------------------------
+
+ <01:45:23> Program started
+ <01:45:24> Program printed Onegin-logo
+ <01:45:24> System error was occupied in 36 in src/main/error.cpp.
+-------------------------------------
+
+ <01:50:12> Program started
+ <01:50:12> Program printed Onegin-logo
+ <01:50:12> Program started reading flags.
+ <01:50:12> Program started reading file.
+ <01:50:12> System error was occupied in 36 in src/main/error.cpp.
+-------------------------------------
+
+ <01:50:20> Program started
+ <01:50:20> Program printed Onegin-logo
+ <01:50:20> Program started reading flags.
+ <01:50:20> Program started reading file.
+ <01:50:20> Program started sorting.
+ <01:50:21> Program started started writing to file.
+ <01:50:21> Program ended successful

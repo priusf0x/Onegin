@@ -6,6 +6,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "logger.h"
+
 int
 EnterData(char** array_of_pointers,
           size_t str_count,
@@ -53,6 +55,7 @@ CountCharInStr(char        character,
 int
 PrintLogo(void)
 {
+
     printf(
     "▒█████   ███▄    █ ▓█████   ▄████  ██▓ ███▄    █ \n"
     "▒██▒  ██▒ ██ ▀█   █ ▓█   ▀  ██▒ ▀█▒▓██▒ ██ ▀█   █ \n"
@@ -64,5 +67,7 @@ PrintLogo(void)
     "░ ░ ░ ▒     ░   ░ ░    ░   ░ ░   ░  ▒ ░   ░   ░ ░ \n"
     "░ ░           ░    ░  ░      ░  ░           ░ \n");
 
-    return 1;
+    LogShit(DETALIZATION_LEVEL_DEBUG, "Program printed Onegin-logo");
+
+    return 0;
 }

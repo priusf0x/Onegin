@@ -26,18 +26,23 @@ main(int    argc,
 
     PrintLogo();
 
+    LogShit(DETALIZATION_LEVEL_DEBUG, "Program started reading flags.");
     CheckError(ReadFlags(argc, argv, &input_name, &output_name));
 
+    LogShit(DETALIZATION_LEVEL_DEBUG, "Program started reading file.");
     CheckError(ReadFile(&input_buffer, &array_of_pointers, &str_count, input_name));
 
+    LogShit(DETALIZATION_LEVEL_DEBUG, "Program started sorting.");
     QSort(array_of_pointers, str_count, CompareStringReversed);
 
-    WriteInFile(array_of_pointers, str_count, output_name);
+
+    LogShit(DETALIZATION_LEVEL_DEBUG, "Program started started writing to file.");
+    CheckError(WriteInFile(array_of_pointers, str_count, output_name));
 
     free(array_of_pointers);
     free(input_buffer);
 
-    LogShit(DETALIZATION_LEVEL_DEBUG, "Program ended succ");
+    LogShit(DETALIZATION_LEVEL_DEBUG, "Program ended successful");
     return 0;
 }
 

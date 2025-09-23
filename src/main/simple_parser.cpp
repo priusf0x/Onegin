@@ -4,6 +4,7 @@
 
 #include "assert.h"
 #include "error.h"
+#include "logger.h"
 
 enum ErrorTypes
 ReadFlags(int    argc,
@@ -17,6 +18,7 @@ ReadFlags(int    argc,
 
     if (argc < 3)
     {
+        LogShit(DETALIZATION_LEVEL_ERROR, "Input error was occupied in %d", __LINE__);
         return INPUT_ERROR;
     }
 
