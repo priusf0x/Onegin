@@ -67,7 +67,7 @@ PrintLogo(void)
     "░ ░ ░ ▒     ░   ░ ░    ░   ░ ░   ░  ▒ ░   ░   ░ ░ \n"
     "░ ░           ░    ░  ░      ░  ░           ░ \n");
 
-    LogShit(DETALIZATION_LEVEL_DEBUG, "Program printed Onegin-logo");
+    LOGSHIT(DETALIZATION_LEVEL_DEBUG, "Program printed Onegin-logo");
 
     return 0;
 }

@@ -13,36 +13,36 @@
 #include "error.h"
 
 int
-main(int    argc,
-     char** argv)
+main(int          argc,
+     const char* const* argv)
 {
-    LogShit(DETALIZATION_LEVEL_DEBUG, "Program started");
+    LOGSHIT(DETALIZATION_LEVEL_DEBUG, "Program started");
 
-    char*  input_name = NULL;
-    char*  output_name = NULL;
+    const char*  input_name = NULL;
+    const char*  output_name = NULL;
     char*  input_buffer = NULL; //REVIEW - можно сделать стракт в будущем
     char** array_of_pointers = NULL;
     size_t str_count = 0;
 
     PrintLogo();
 
-    LogShit(DETALIZATION_LEVEL_DEBUG, "Program started reading flags.");
+    LOGSHIT(DETALIZATION_LEVEL_DEBUG, "Program started reading flags.");
     CheckError(ReadFlags(argc, argv, &input_name, &output_name));
 
-    LogShit(DETALIZATION_LEVEL_DEBUG, "Program started reading file.");
+    LOGSHIT(DETALIZATION_LEVEL_DEBUG, "Program started reading file.");
     CheckError(ReadFile(&input_buffer, &array_of_pointers, &str_count, input_name));
 
-    LogShit(DETALIZATION_LEVEL_DEBUG, "Program started sorting.");
+    LOGSHIT(DETALIZATION_LEVEL_DEBUG, "Program started sorting.");
     QSort(array_of_pointers, str_count, CompareStringReversed);
 
 
-    LogShit(DETALIZATION_LEVEL_DEBUG, "Program started started writing to file.");
+    LOGSHIT(DETALIZATION_LEVEL_DEBUG, "Program started started writing to file.");
     CheckError(WriteInFile(array_of_pointers, str_count, output_name));
 
     free(array_of_pointers);
     free(input_buffer);
 
-    LogShit(DETALIZATION_LEVEL_DEBUG, "Program ended successful");
+    LOGSHIT(DETALIZATION_LEVEL_DEBUG, "Program ended successful");
     return 0;
 }
 
@@ -50,6 +50,3 @@ main(int    argc,
     // clock_gettime(CLOCK_MONOTONIC_RAW, &start);
     // long delta_us = (end.tv_sec - start.tv_sec) * 1000 + (end.tv_nsec - start.tv_nsec)/1000000;
     // printf("Sorting time = %ld ms\n", delta_us);
-
-    // assert(file_input != NULL);
-    // assert(file_output != NULL);

@@ -8,9 +8,9 @@
 
 enum ErrorTypes
 ReadFlags(int    argc,
-          char** argv,
-          char** input_name,
-          char** output_name)
+          const char* const* argv,
+          const char** input_name,
+          const char** output_name)
 {
     ASSERT(argv != NULL);
     ASSERT(input_name != NULL);
@@ -18,7 +18,7 @@ ReadFlags(int    argc,
 
     if (argc < 3)
     {
-        LogShit(DETALIZATION_LEVEL_ERROR, "Input error was occupied in %d", __LINE__);
+        LOGSHIT(DETALIZATION_LEVEL_ERROR, "Input error was occupied in %d", __LINE__);
         return INPUT_ERROR;
     }
 

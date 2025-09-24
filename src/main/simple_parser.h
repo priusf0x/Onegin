@@ -3,6 +3,6 @@
 
 #include "error.h"
 
-enum ErrorTypes ReadFlags(int argc, char** argv, char** input_file, char** output_file);
+enum ErrorTypes ReadFlags(int argc, const char* const* argv, const char** input_file,const char** output_file);
 
 #endif

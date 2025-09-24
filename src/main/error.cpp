@@ -13,29 +13,29 @@ CheckError(enum ErrorTypes return_value)
     case SUCCESS:
         break;
     case MEMORY_ERROR:
-        LogShit(DETALIZATION_LEVEL_ERROR, "Memory error was occupied in %d in %s.", __LINE__, __FILE__);
+        LOGSHIT(DETALIZATION_LEVEL_ERROR, "Memory error was occupied");
         printf("Error memory was occupied.\n");
-        exit(EXIT_FAILURE);
+        exit(MEMORY_ERROR);
         break;
     case INPUT_ERROR:
-        LogShit(DETALIZATION_LEVEL_ERROR, "Input error was occupied in %d in %s.", __LINE__, __FILE__);
+        LOGSHIT(DETALIZATION_LEVEL_ERROR, "Input error was occupied");
         printf("Incorrect input.\n");
-        exit(EXIT_FAILURE);
+        exit(INPUT_ERROR);
         break;
     case READ_ERROR:
-        LogShit(DETALIZATION_LEVEL_ERROR, "Read error was occupied in %d in %s.", __LINE__, __FILE__);
+        LOGSHIT(DETALIZATION_LEVEL_ERROR, "Read error was occupied");
         printf("Unable to read file.\n");
-        exit(EXIT_FAILURE);
+        exit(READ_ERROR);
         break;
     case EMPTY_FILE_ERROR:
-        LogShit(DETALIZATION_LEVEL_ERROR, "Empty file error was occupied in %d in %s.", __LINE__, __FILE__);
+        LOGSHIT(DETALIZATION_LEVEL_ERROR, "Empty file error was occupied");
         printf("Input file is empty.\n");
-        exit(EXIT_FAILURE);
+        exit(EMPTY_FILE_ERROR);
         break;
     case SYSTEM_ERROR:
-        LogShit(DETALIZATION_LEVEL_ERROR, "System error was occupied in %d in %s.", __LINE__, __FILE__);
+        LOGSHIT(DETALIZATION_LEVEL_ERROR, "System error was occupied");
         printf("System didn't find the file.\n");
-        exit(EXIT_FAILURE);
+        exit(SYSTEM_ERROR);
         break;
     default: return 0;
     }

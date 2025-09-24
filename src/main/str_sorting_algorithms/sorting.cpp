@@ -21,7 +21,7 @@ QSort(char** pointers_array,
         if (compare_criteria(pointers_array[current_index + 1], pointers_array[current_index]) <= 0)
         {
             buffer_element = pointers_array[current_index + 1];
-            pointers_array[current_index + 1] = pointers_array[current_index];
+            pointers_array[current_index + 1] = pointers_array[current_index]; //УМОМ - копипаст, функция
             pointers_array[current_index] = buffer_element;
             current_index++;
         }

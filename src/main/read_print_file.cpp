@@ -31,20 +31,26 @@ ReadFile(char**      input_buffer,
     size_t char_number = (size_t) (file_stat.st_size);
 
     FILE* file_input = fopen(input_name, "r");
-
     if (file_input == NULL)
     {
         return READ_ERROR;
     }
 
     *input_buffer = (char*) calloc(char_number + 2, sizeof(char));//1 для \0 другой для если надо будет \n
-
     if (*input_buffer == NULL)
     {
+        fclose(file_input);
         return MEMORY_ERROR;
     }
 
     size_t read_count = fread(*input_buffer, sizeof(char), char_number, file_input);
+    if (read_count != char_number)
+    {
+        free(*input_buffer);
+        fclose(file_input);
+        return READ_ERROR;
+    }
+
     if (fclose(file_input) != 0)
     {
         return READ_ERROR;
@@ -59,6 +65,7 @@ ReadFile(char**      input_buffer,
     }
     else
     {
+        free(*input_buffer);
         return EMPTY_FILE_ERROR;
     }
 
@@ -67,6 +74,7 @@ ReadFile(char**      input_buffer,
 
     if (*array_of_pointers == NULL)
     {
+        free(*input_buffer);
         return MEMORY_ERROR;
     }
 
@@ -84,7 +92,6 @@ WriteInFile(char**      array_of_pointers,
     ASSERT(output_name != NULL);
 
     FILE* file_output = fopen(output_name, "w");
-
     if (file_output == NULL)
     {
         return READ_ERROR;
@@ -93,7 +100,7 @@ WriteInFile(char**      array_of_pointers,
     for (size_t i = 0; i < str_count; i++)
     {
         const char* pointer = array_of_pointers[i];
-        fwrite(pointer, CountStringLength(pointer) + 1, sizeof(char), file_output);
+        fwrite(pointer, CountStringLength(pointer) + 1, sizeof(char), file_output); //TODO - ошибка в fwrite
     }
 
     if (fclose(file_output) != 0)

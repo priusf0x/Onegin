@@ -96,3 +96,21 @@
  <01:50:20> Program started sorting.
  <01:50:21> Program started started writing to file.
  <01:50:21> Program ended successful
+-------------------------------------
+
+ <23:17:36> Program started
+ <23:17:36> Program printed Onegin-logo
+ <23:17:36> Program started reading flags.
+ <23:17:36> Program started reading file.
+ <23:17:36> Program started sorting.
+ <23:17:37> Program started started writing to file.
+ <23:17:37> Program ended successful
+-------------------------------------
+
+ <23:33:05> Program started
+ <23:33:05> Program printed Onegin-logo
+ <23:33:05> Program started reading flags.
+ <23:33:05> Program started reading file.
+ <23:33:05> Program started sorting.
+ <23:33:05> Program started started writing to file.
+ <23:33:05> Program ended successful
